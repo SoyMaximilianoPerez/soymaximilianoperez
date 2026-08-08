@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maximiliano Perez — Abogado | Goya, Corrientes</title>
+<meta name="description" content="Maximiliano Perez, abogado en Goya, Corrientes. Estudio jurídico, consultoría política, consultas universitarias y escribanía.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F4F5F2;
+  --tinta:#0E1F1B;
+  --punzo:#A6273C;
+  --gris:#6E7A74;
+  --linea:#D6D9D2;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Karla', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
+/* ---------- Encabezado ---------- */
+.hero{padding:64px 0 40px;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.retrato{position:relative;flex:0 0 auto}
+.retrato img{
+  display:block;width:190px;height:230px;object-fit:cover;object-position:center top;
+  border:1px solid var(--linea);background:#e8eae5;position:relative;z-index:2;
+}
+.retrato::after{
+  content:"";position:absolute;inset:14px -14px -14px 14px;
+  border:1.5px solid var(--punzo);z-index:1;
+}
+.identidad{flex:1 1 300px;min-width:280px}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--punzo);font-weight:700;margin-bottom:14px;
+}
+h1{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(2.6rem,7vw,4.2rem);line-height:.98;letter-spacing:-.02em;
+}
+h1 span{display:block;font-weight:400;font-style:italic;color:var(--gris);font-size:.42em;letter-spacing:0;margin-top:14px;font-family:var(--serif)}
+.datos{margin-top:22px;padding-top:18px;border-top:1px solid var(--linea);font-size:.92rem;color:var(--gris)}
+.datos strong{color:var(--tinta);font-weight:500}
+
+/* ---------- Pestañas (carátula de expediente) ---------- */
+.indice{margin-top:26px;border-bottom:2px solid var(--tinta);display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.indice::-webkit-scrollbar{display:none}
+.indice button{
+  font-family:var(--sans);font-size:.86rem;font-weight:500;letter-spacing:.04em;
+  color:var(--gris);background:transparent;border:1px solid transparent;border-bottom:none;
+  padding:14px 20px;cursor:pointer;white-space:nowrap;position:relative;top:1px;
+  transition:color .18s ease,background .18s ease;
+}
+.indice button:hover{color:var(--tinta)}
+.indice button[aria-selected="true"]{
+  color:var(--tinta);font-weight:700;background:#fff;
+  border-color:var(--linea);border-bottom:2px solid #fff;
+}
+.indice button[aria-selected="true"]::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--punzo);
+}
+.indice button:focus-visible{outline:2px solid var(--punzo);outline-offset:-4px}
+
+/* ---------- Paneles ---------- */
+.panel{
+  display:none;background:#fff;border:1px solid var(--linea);border-top:none;
+  padding:44px 44px 52px;position:relative;
+}
+.panel[data-abierto]{display:block;animation:entra .35s ease both}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.folio{
+  position:absolute;top:20px;right:26px;font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--linea);font-weight:700;
+}
+.panel h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.01em;max-width:22ch}
+.panel .bajada{margin-top:16px;max-width:60ch;color:var(--gris)}
+.lista{margin-top:32px;display:grid;gap:0;border-top:1px solid var(--linea)}
+.lista div{padding:16px 0;border-bottom:1px solid var(--linea);display:flex;gap:18px;align-items:baseline}
+.lista span{color:var(--punzo);font-weight:700;font-size:.8rem;flex:0 0 14px}
+.cta{
+  display:inline-block;margin-top:34px;background:var(--tinta);color:var(--papel);
+  text-decoration:none;padding:14px 26px;font-size:.86rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;transition:background .18s ease;
+}
+.cta:hover{background:var(--punzo)}
+
+/* ---------- Pie ---------- */
+footer{padding:48px 0 60px;font-size:.8rem;color:var(--gris);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--gris)}
+
+@media (max-width:600px){
+  .hero{padding:40px 0 28px;gap:28px}
+  .retrato img{width:140px;height:170px}
+  .panel{padding:32px 24px 40px}
+  .folio{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="retrato">
+      <img src="1.png" alt="Maximiliano Perez">
+    </div>
+    <div class="identidad">
+      <p class="eyebrow">Goya · Corrientes</p>
+      <h1>Maximiliano<br>Perez<span>Abogado</span></h1>
+      <p class="datos">
+        Estudio Jurídico Perez Scotto · <strong>Tel. (0000) 00-0000</strong> · <strong>correo@dominio.com</strong>
+      </p>
+    </div>
+  </header>
+
+  <nav class="indice" role="tablist" aria-label="Áreas de trabajo">
+    <button role="tab" id="t1" aria-controls="p1" aria-selected="true">Estudio Jurídico</button>
+    <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Consultoría Política</button>
+    <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Consultas Universitarias</button>
+    <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">Escribanía</button>
+  </nav>
+
+  <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1" data-abierto>
+    <p class="folio">fs. 1</p>
+    <h2>Patrocinio y asesoramiento en derecho laboral</h2>
+    <p class="bajada">Representación de trabajadores y empleadores en reclamos laborales ante la justicia de Goya y la provincia de Corrientes. Análisis del caso, estrategia y seguimiento del expediente de principio a fin.</p>
+    <div class="lista">
+      <div><span>—</span><p>Despidos, despido indirecto y liquidaciones finales</p></div>
+      <div><span>—</span><p>Registración deficiente y reclamos por diferencias salariales</p></div>
+      <div><span>—</span><p>Accidentes y enfermedades del trabajo</p></div>
+      <div><span>—</span><p>Intimaciones, telegramas y negociación previa al juicio</p></div>
+    </div>
+    <a class="cta" href="mailto:correo@dominio.com">Pedir una consulta</a>
+  </section>
+
+  <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+    <p class="folio">fs. 2</p>
+    <h2>Consultoría política y asesoramiento institucional</h2>
+    <p class="bajada">Acompañamiento legal a candidatos, espacios políticos y organismos públicos: desde la normativa electoral hasta la comunicación institucional.</p>
+    <div class="lista">
+      <div><span>—</span><p>Derecho electoral y presentaciones ante la Justicia Electoral</p></div>
+      <div><span>—</span><p>Armado y control de documentación partidaria</p></div>
+      <div><span>—</span><p>Asesoramiento a municipios y organismos descentralizados</p></div>
+      <div><span>—</span><p>Vocería y comunicación de contenido jurídico</p></div>
+    </div>
+    <a class="cta" href="mailto:correo@dominio.com">Coordinar una reunión</a>
+  </section>
+
+  <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+    <p class="folio">fs. 3</p>
+    <h2>Consultas universitarias</h2>
+    <p class="bajada">Espacio para estudiantes de Abogacía: orientación en trabajos prácticos, preparación de finales y primeros pasos en la práctica profesional.</p>
+    <div class="lista">
+      <div><span>—</span><p>Orientación en materias del área laboral y procesal</p></div>
+      <div><span>—</span><p>Lectura y análisis de fallos</p></div>
+      <div><span>—</span><p>Redacción de escritos: estructura y errores frecuentes</p></div>
+      <div><span>—</span><p>Prácticas y acompañamiento inicial en el estudio</p></div>
+    </div>
+    <a class="cta" href="mailto:correo@dominio.com">Escribir una consulta</a>
+  </section>
+
+  <section class="panel" id="p4" role="tabpanel" aria-labelledby="t4" hidden>
+    <p class="folio">fs. 4</p>
+    <h2>Escribanía</h2>
+    <p class="bajada">Gestión y acompañamiento en trámites notariales, con seguimiento de la documentación desde el pedido inicial hasta la inscripción.</p>
+    <div class="lista">
+      <div><span>—</span><p>Escrituras de compraventa y donación</p></div>
+      <div><span>—</span><p>Poderes generales y especiales</p></div>
+      <div><span>—</span><p>Certificaciones de firmas y copias</p></div>
+      <div><span>—</span><p>Sucesiones y trámites registrales</p></div>
+    </div>
+    <a class="cta" href="mailto:correo@dominio.com">Consultar por un trámite</a>
+  </section>
+
+  <footer>
+    <p>© <span id="anio"></span> Maximiliano Perez — Goya, Corrientes</p>
+    <p>Conducción de <em>Legalmente Hablando</em>, lunes por la noche</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  const abrir = (tab) => {
+    tabs.forEach(t => {
+      const activo = t === tab;
+      t.setAttribute('aria-selected', activo);
+      t.tabIndex = activo ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      panel.hidden = !activo;
+      if (activo) { panel.setAttribute('data-abierto',''); } else { panel.removeAttribute('data-abierto'); }
+    });
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => abrir(tab));
+    tab.addEventListener('keydown', (e) => {
+      const paso = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!paso) return;
+      e.preventDefault();
+      const sig = tabs[(i + paso + tabs.length) % tabs.length];
+      sig.focus(); abrir(sig);
+    });
+  });
+  document.getElementById('anio').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
