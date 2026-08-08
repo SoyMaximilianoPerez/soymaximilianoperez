@@ -83,7 +83,7 @@ body{background:var(--blanco);color:var(--negro);font-family:var(--fuente);font-
 .encabezado h2{font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:-.01em;margin-top:14px}
 .encabezado h2::after{content:"";display:block;width:56px;height:3px;background:var(--rojo);margin:20px auto 0}
 
-.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grilla{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .tarjeta{
   display:flex;flex-direction:column;min-height:280px;height:100%;
   background:var(--blanco);border:1px solid var(--linea);border-top:4px solid var(--negro);
@@ -108,6 +108,11 @@ body{background:var(--blanco);color:var(--negro);font-family:var(--fuente);font-
 .lista{list-style:none;columns:2;column-gap:44px}
 .lista li{padding:11px 0;border-bottom:1px solid var(--linea);font-size:.9rem;display:flex;gap:13px;break-inside:avoid}
 .lista li::before{content:"";flex:0 0 6px;height:6px;background:var(--rojo);margin-top:.6em}
+.articulos{columns:1}
+.articulos li{align-items:baseline;justify-content:flex-start;gap:13px;flex-wrap:wrap}
+.articulos a{color:var(--negro);text-decoration:none;font-weight:600;border-bottom:1px solid var(--rojo);padding-bottom:1px}
+.articulos a:hover{color:var(--rojo)}
+.articulos .fecha{margin-left:auto;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
 .nota{margin-top:24px;display:inline-block;background:var(--negro);color:#fff;padding:9px 18px;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 
 /* ---------- Pie ---------- */
@@ -121,13 +126,16 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
 .wsp::after{content:"Escribime";position:absolute;right:70px;white-space:nowrap;background:var(--negro);color:#fff;font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:9px 15px;opacity:0;pointer-events:none;transition:opacity .25s ease}
 .wsp:hover::after,.wsp:focus-visible::after{opacity:1}
 
+@media (max-width:1040px){
+  .grilla{grid-template-columns:repeat(2,1fr)}
+}
 @media (max-width:900px){
-  .grilla{grid-template-columns:1fr}
   .lista{columns:1}
   .detalle{padding:30px 26px}
   .perfil{padding:54px 0 58px}
 }
 @media (max-width:760px){
+  .grilla{grid-template-columns:1fr}
   .hero .wrap{grid-template-columns:1fr;gap:34px;text-align:center}
   .hero{padding:54px 0 50px}
   .credenciales{justify-content:center}
@@ -320,6 +328,13 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
         <span class="resumen">Estudiantes de Abogacía.</span>
         <span class="mas">Ver detalle</span>
       </button>
+
+      <button class="tarjeta" aria-expanded="false" aria-controls="d4" data-panel="d4">
+        <span class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h7M9 8h3"/></svg></span>
+        <h3>Artículos de mi autoría</h3>
+        <span class="resumen">Publicaciones y análisis jurídicos.</span>
+        <span class="mas">Ver detalle</span>
+      </button>
     </div>
 
     <div class="detalle" id="d1">
@@ -349,6 +364,19 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
         <li>Lectura y análisis de fallos</li>
         <li>Redacción de escritos: estructura y errores frecuentes</li>
         <li>Prácticas y acompañamiento inicial en el estudio</li>
+      </ul>
+    </div>
+
+    <div class="detalle" id="d4">
+      <h4>Artículos de mi autoría</h4>
+      <p>Publicaciones y análisis sobre temas jurídicos de actualidad.</p>
+      <!--
+        PARA AGREGAR UN ARTÍCULO: copiá una línea <li> entera y cambiá el título, la fecha y el enlace.
+        Si el artículo no está publicado en internet, borrá el <a href="..."> y </a> y dejá solo el texto.
+      -->
+      <ul class="lista articulos" style="margin-top:22px">
+        <li><a href="#">Título del primer artículo</a><span class="fecha">Agosto 2026</span></li>
+        <li><a href="#">Título del segundo artículo</a><span class="fecha">Agosto 2026</span></li>
       </ul>
     </div>
   </div>
