@@ -27,11 +27,10 @@ button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin-inline:au
 .hero::before,.hero::after,.perfil::before,.areas::after{content:'';position:absolute;border-radius:50%;pointer-events:none;filter:blur(1px)}
 .hero::before{width:430px;height:430px;right:-130px;top:-170px;background:rgba(126,18,32,.08);box-shadow:-90px 220px 100px rgba(126,18,32,.05)}
 .hero::after{width:250px;height:250px;left:-120px;bottom:-130px;background:rgba(23,19,19,.05)}
-.hero .wrap{display:grid;grid-template-columns:minmax(260px,390px) 1fr;gap:clamp(54px,8vw,100px);align-items:center}
-.marco-foto{position:relative;justify-self:center;padding:18px}
-.marco-foto::before{content:'';position:absolute;inset:-4px 28px 28px -4px;border-radius:46% 54% 50% 50%;background:var(--rojo);transform:rotate(-5deg);box-shadow:var(--sombra)}
-.marco-foto::after{content:'§';position:absolute;right:-24px;bottom:22px;width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:var(--negro);color:#fff;font-family:Georgia,serif;font-size:2rem;z-index:4;box-shadow:0 12px 30px rgba(17,17,17,.22)}
-.retrato{width:clamp(260px,28vw,360px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--hueso);position:relative;z-index:2;box-shadow:0 25px 60px rgba(43,20,22,.22);border:8px solid rgba(255,255,255,.94)}
+.hero .wrap{display:grid;grid-template-columns:minmax(300px,460px) 1fr;gap:clamp(54px,8vw,100px);align-items:center}
+.marco-foto{position:relative;justify-self:center;padding:14px}
+.marco-foto::before{content:'';position:absolute;inset:6px 30px 30px 6px;border-radius:46% 54% 50% 50%;background:var(--rojo);transform:rotate(-5deg);box-shadow:var(--sombra)}
+.retrato{width:clamp(300px,33vw,430px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--hueso);position:relative;z-index:2;box-shadow:0 25px 60px rgba(43,20,22,.22);border:8px solid rgba(255,255,255,.94)}
 .retrato img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .sobrelinea{display:block;margin-bottom:18px;color:var(--rojo);font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase}
 .identidad h1{font-weight:800;text-transform:uppercase;font-size:clamp(2.6rem,5.8vw,4.8rem);line-height:.96;letter-spacing:-.045em;max-width:720px}
@@ -39,18 +38,20 @@ button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin-inline:au
 .bajada{max-width:580px;margin-top:25px;color:var(--gris);font-size:1rem}
 .credenciales{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;list-style:none}
 .credenciales li{padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.82);box-shadow:0 7px 20px rgba(43,20,22,.07);font-size:.65rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;backdrop-filter:blur(8px)}
-.hero-acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.boton{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:.25s ease}.boton-principal{background:var(--rojo);color:#fff;box-shadow:0 12px 28px rgba(126,18,32,.25)}.boton-secundario{background:#fff;color:var(--negro);box-shadow:0 10px 28px rgba(43,20,22,.09)}.boton:hover{transform:translateY(-3px)}
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:.25s ease}.boton-principal{background:var(--rojo);color:#fff;box-shadow:0 12px 28px rgba(126,18,32,.25)}.boton-secundario{background:#fff;color:var(--negro);box-shadow:0 10px 28px rgba(43,20,22,.09)}.boton:hover{transform:translateY(-3px)}
 .perfil{position:relative;z-index:3;padding:105px 0;background:linear-gradient(145deg,var(--hueso) 0%,#fff 100%);overflow:hidden}
 .perfil::before{width:390px;height:390px;left:-210px;top:-40px;background:rgba(126,18,32,.07)}
-.perfil .wrap{max-width:990px;display:grid;grid-template-columns:280px 1fr;gap:70px;align-items:start}
-.perfil h2{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,4vw,3.25rem);line-height:1;letter-spacing:-.035em;margin-top:16px}.perfil h2 span{display:block;color:var(--rojo)}
-.perfil .texto{position:relative;background:rgba(255,255,255,.86);padding:42px 46px;border-radius:28px;box-shadow:var(--sombra);backdrop-filter:blur(10px)}
-.perfil .texto::before{content:'“';position:absolute;left:24px;top:-6px;color:var(--rojo-suave);font-family:Georgia,serif;font-size:6rem;line-height:1;pointer-events:none}
-.perfil .texto p{position:relative;z-index:1;color:#464041;font-size:.98rem}.perfil .texto p+p{margin-top:20px}.perfil .texto strong{color:var(--negro)}
+.perfil .wrap{max-width:1080px}
+.perfil .encabezado{text-align:center;margin-bottom:52px}
+.perfil h2{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,4vw,3.25rem);line-height:1.02;letter-spacing:-.035em;margin-top:14px}.perfil h2 span{color:var(--rojo)}
+.nubes{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.nube{position:relative;background:rgba(255,255,255,.88);padding:46px 44px;border-radius:28px;box-shadow:var(--sombra);backdrop-filter:blur(10px);display:flex;align-items:center}
+.nube::before{content:'“';position:absolute;left:26px;top:-4px;color:var(--rojo-suave);font-family:Georgia,serif;font-size:5.4rem;line-height:1;pointer-events:none}
+.nube p{position:relative;z-index:1;color:#464041;font-size:.98rem}.nube strong{color:var(--negro)}
 .destacado{font-size:1.06rem!important;font-weight:600;color:var(--negro)!important;line-height:1.75}
 .marquesina{overflow:hidden;width:100%;pointer-events:none;background:var(--negro);position:relative;z-index:4;padding:10px 0}
 .marquesina::before,.marquesina::after{content:'';position:absolute;top:0;bottom:0;width:15%;z-index:2}.marquesina::before{left:0;background:linear-gradient(90deg,var(--negro),transparent)}.marquesina::after{right:0;background:linear-gradient(-90deg,var(--negro),transparent)}
-.tira{display:flex;align-items:center;width:max-content;animation:desliza 30s linear infinite;gap:10px}@keyframes desliza{to{transform:translateX(-50%)}}
+.tira{display:flex;align-items:center;width:max-content;animation:desliza 30s linear infinite}@keyframes desliza{to{transform:translateX(-50%)}}
 .tira figure{flex:0 0 auto;height:clamp(250px,25vw,370px);overflow:hidden}.tira img{height:100%;width:auto;display:block;filter:saturate(.76) contrast(1.04);transition:.3s}
 .areas{position:relative;padding:110px 0 120px;background:var(--hueso);overflow:hidden}.areas::after{width:520px;height:520px;right:-260px;top:160px;background:rgba(126,18,32,.07)}
 .areas .fachada{opacity:.045}.areas .velo{background:radial-gradient(circle at 50% 46%,rgba(246,243,239,.94) 0 28%,rgba(246,243,239,.5) 64%,transparent)}
@@ -63,8 +64,8 @@ button,a{font:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin-inline:au
 .detalle{display:none;margin-top:22px;background:#fff;border:0;border-radius:24px;padding:42px 46px;box-shadow:var(--sombra)}.detalle[data-abierto]{display:block;animation:aparece .4s ease both}@keyframes aparece{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}.detalle h4{font-size:.7rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--rojo);margin-bottom:20px}.lista{list-style:none;columns:2;column-gap:44px}.lista li{padding:11px 0;font-size:.9rem;display:flex;gap:13px;break-inside:avoid}.lista li::before{content:'✦';flex:0 0 auto;color:var(--rojo);font-size:.66rem;margin-top:.3em}.articulos{columns:1}.articulos li{align-items:baseline;flex-wrap:wrap}.articulos a{color:var(--negro);text-decoration:none;font-weight:650}.articulos a:hover{color:var(--rojo)}.fecha{margin-left:auto;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gris)}.nota{margin-top:24px;display:inline-block;background:var(--negro);color:#fff;border-radius:999px;padding:9px 17px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 footer{position:relative;background:var(--negro);color:rgba(255,255,255,.58);padding:44px 0;text-align:center;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}footer::before{content:'✦';display:block;color:var(--rojo);font-size:1.2rem;margin-bottom:9px}
 .wsp{position:fixed;right:24px;bottom:24px;z-index:60;width:60px;height:60px;border-radius:20px;background:var(--rojo);color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 12px 28px rgba(126,18,32,.3);transition:.25s}.wsp:hover{background:var(--negro);transform:translateY(-4px) rotate(-3deg)}.wsp svg{width:29px;height:29px;fill:currentColor}.wsp::after{content:'Escribime';position:absolute;right:72px;white-space:nowrap;background:var(--negro);color:#fff;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:9px 15px;opacity:0;transition:.25s}.wsp:hover::after,.wsp:focus-visible::after{opacity:1}
-@media(max-width:1040px){.grilla{grid-template-columns:repeat(2,1fr)}.hero .wrap{gap:45px}.perfil .wrap{grid-template-columns:220px 1fr;gap:40px}}
-@media(max-width:760px){.wrap{width:min(100% - 32px,1160px)}.hero{min-height:auto;padding:70px 0 66px}.hero .wrap{grid-template-columns:1fr;gap:52px;text-align:center}.marco-foto::after{right:4px}.identidad h1{font-size:clamp(2.5rem,14vw,4rem)}.bajada{margin-inline:auto}.credenciales,.hero-acciones{justify-content:center}.perfil{padding:75px 0}.perfil .wrap{grid-template-columns:1fr;gap:32px;text-align:center}.perfil .texto{text-align:left;padding:34px 27px}.grilla{grid-template-columns:1fr}.areas{padding:78px 0 86px}.tarjeta{min-height:280px}.lista{columns:1}.detalle{padding:32px 25px}.tira{animation-duration:20s}.wsp{right:16px;bottom:16px;width:55px;height:55px;border-radius:18px}.wsp::after{display:none}}
+@media(max-width:1040px){.grilla{grid-template-columns:repeat(2,1fr)}.hero .wrap{gap:45px}}
+@media(max-width:760px){.wrap{width:min(100% - 32px,1160px)}.hero{min-height:auto;padding:70px 0 66px}.hero .wrap{grid-template-columns:1fr;gap:52px;text-align:center}.identidad h1{font-size:clamp(2.5rem,14vw,4rem)}.bajada{margin-inline:auto}.credenciales{justify-content:center}.perfil{padding:75px 0}.nubes{grid-template-columns:1fr;gap:20px}.nube{padding:36px 28px}.grilla{grid-template-columns:1fr}.areas{padding:78px 0 86px}.tarjeta{min-height:280px}.lista{columns:1}.detalle{padding:32px 25px}.tira{animation-duration:20s}.wsp{right:16px;bottom:16px;width:55px;height:55px;border-radius:18px}.wsp::after{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tira{animation:none}.tarjeta,.boton,.wsp{transition:none}}
 </style>
 </head>
@@ -190,20 +191,23 @@ footer{position:relative;background:var(--negro);color:rgba(255,255,255,.58);pad
         <li>Procurador</li>
         <li>Maestría en Derecho (en curso)</li>
       </ul>
-      <div class="hero-acciones">
-        <a class="boton boton-principal" href="https://wa.me/5493777620809?text=Hola%20Maximiliano%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">→</span></a>
-        <a class="boton boton-secundario" href="#areas">Ver áreas</a>
-      </div>
     </div>
   </div>
 </header>
 
 <section class="perfil">
   <div class="wrap">
-    <div><p class="label">Mi perfil</p><h2>Quién <span>soy</span></h2></div>
-    <div class="texto">
-      <p class="destacado">Soy abogado en la provincia de Corrientes. Ejerzo la profesión en forma independiente y también realizo consultorías en política y militancia política, tanto en el ámbito universitario como en el gubernamental.</p>
-      <p>Además del título de abogado, soy <strong>escribano público nacional y procurador</strong>, y estoy próximo a graduarme como <strong>Magíster en Derecho por la Universidad Nacional de Córdoba</strong>. Esa formación me permite atender de manera integral tanto los casos jurídicos como el asesoramiento en política, militancia y ámbito universitario.</p>
+    <div class="encabezado">
+      <p class="label">Mi perfil</p>
+      <h2>Quién <span>soy</span></h2>
+    </div>
+    <div class="nubes">
+      <div class="nube">
+        <p class="destacado">Soy abogado en la provincia de Corrientes. Ejerzo la profesión en forma independiente y también realizo consultorías en política y militancia política, tanto en el ámbito universitario como en el gubernamental.</p>
+      </div>
+      <div class="nube">
+        <p>Además del título de abogado, soy <strong>escribano público nacional y procurador</strong>, y estoy próximo a graduarme como <strong>Magíster en Derecho por la Universidad Nacional de Córdoba</strong>. Esa formación me permite atender de manera integral tanto los casos jurídicos como el asesoramiento en política, militancia y ámbito universitario.</p>
+      </div>
     </div>
   </div>
 </section>
