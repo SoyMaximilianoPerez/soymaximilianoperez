@@ -16,136 +16,229 @@
   --gris:#5C5C5C;
   --linea:#E4E1DE;
   --rojo:#7E1220;
-  --rojo-claro:#9B2130;
   --fuente:'Montserrat', system-ui, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--blanco);color:var(--negro);font-family:var(--fuente);font-weight:400;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:3}
 .cinta{height:5px;background:linear-gradient(90deg,var(--rojo) 0 62%, var(--negro) 62% 100%)}
 .label{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--rojo)}
 
+/* ---------- Fachada de fondo ---------- */
+.fachada{position:absolute;left:0;right:0;bottom:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;color:#0E0E0E;opacity:.15}
+.velo{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 62% 58% at 50% 52%, rgba(255,255,255,.96) 0%, rgba(255,255,255,.72) 48%, rgba(255,255,255,0) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 26%, rgba(255,255,255,0) 72%, rgba(255,255,255,.9) 100%)}
+
 /* ---------- Presentación ---------- */
-.hero{padding:74px 0 68px;display:grid;grid-template-columns:auto 1fr;gap:66px;align-items:center}
-.marco-foto{position:relative;flex:0 0 auto;justify-self:center}
-.retrato{
-  width:clamp(210px,24vw,290px);aspect-ratio:1;border-radius:50%;overflow:hidden;
-  background:var(--hueso);position:relative;z-index:2;box-shadow:0 0 0 1px var(--linea);
-}
+.hero{position:relative;padding:78px 0 74px;overflow:hidden;background:var(--blanco)}
+.hero .wrap{display:grid;grid-template-columns:auto 1fr;gap:66px;align-items:center}
+.marco-foto{position:relative;justify-self:center}
+.retrato{width:clamp(210px,24vw,290px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--hueso);position:relative;z-index:2;box-shadow:0 0 0 1px var(--linea),0 18px 40px rgba(17,17,17,.12)}
 .retrato img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
-.marco-foto::before{
-  content:"";position:absolute;inset:-16px;border-radius:50%;
-  border:2px solid var(--rojo);border-right-color:transparent;border-bottom-color:transparent;
-  transform:rotate(-38deg);z-index:1;
-}
-.marco-foto::after{
-  content:"";position:absolute;right:-6px;bottom:6px;width:64px;height:64px;
-  background:var(--hueso);border-left:3px solid var(--rojo);z-index:0;
-}
-.identidad h1{
-  font-weight:800;text-transform:uppercase;
-  font-size:clamp(2rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.01em;margin:14px 0 0;
-}
+.marco-foto::before{content:"";position:absolute;inset:-16px;border-radius:50%;border:2px solid var(--rojo);border-right-color:transparent;border-bottom-color:transparent;transform:rotate(-38deg);z-index:1}
+.identidad h1{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.01em}
 .identidad h1 span{display:block;color:var(--rojo)}
-.credenciales{margin-top:22px;padding-top:20px;border-top:2px solid var(--negro);display:flex;flex-wrap:wrap;gap:10px 26px}
-.credenciales li{list-style:none;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--negro);display:flex;align-items:center;gap:9px}
+.credenciales{margin-top:26px;padding-top:22px;border-top:2px solid var(--negro);display:flex;flex-wrap:wrap;gap:12px 28px}
+.credenciales li{list-style:none;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:9px}
 .credenciales li::before{content:"";width:7px;height:7px;background:var(--rojo)}
-.boton{
-  display:inline-flex;align-items:center;gap:11px;margin-top:32px;
-  background:var(--rojo);color:#fff;text-decoration:none;
-  padding:16px 32px;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  transition:background .25s ease,transform .25s ease;
-}
-.boton:hover{background:var(--negro);transform:translateY(-2px)}
-.boton svg{width:17px;height:17px;fill:currentColor}
 
 /* ---------- Franja de fotos ---------- */
-.marquesina{overflow:hidden;width:100%;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);pointer-events:none;background:var(--hueso)}
+.marquesina{overflow:hidden;width:100%;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);pointer-events:none;background:var(--hueso);position:relative;z-index:4}
 .tira{display:flex;width:max-content;animation:desliza 24s linear infinite}
 @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tira figure{flex:0 0 auto;margin-right:6px;width:clamp(200px,21vw,300px);aspect-ratio:3/4;overflow:hidden;background:#eceae7}
 .tira img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* ---------- Áreas ---------- */
-.areas{padding:86px 0 96px;background:var(--hueso)}
-.encabezado{text-align:center;margin-bottom:48px}
+.areas{position:relative;padding:88px 0 96px;background:var(--hueso);overflow:hidden}
+.areas .fachada{opacity:.11}
+.areas .velo{background:
+  radial-gradient(ellipse 66% 60% at 50% 50%, rgba(246,245,243,.96) 0%, rgba(246,245,243,.75) 48%, rgba(246,245,243,0) 100%),
+  linear-gradient(180deg, rgba(246,245,243,.9) 0%, rgba(246,245,243,0) 28%, rgba(246,245,243,0) 70%, rgba(246,245,243,.95) 100%)}
+.encabezado{text-align:center;margin-bottom:50px}
 .encabezado h2{font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:-.01em;margin-top:14px}
 .encabezado h2::after{content:"";display:block;width:56px;height:3px;background:var(--rojo);margin:20px auto 0}
-.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+
+.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .tarjeta{
-  grid-column:span 1;background:var(--blanco);border:1px solid var(--linea);border-top:4px solid var(--negro);
-  padding:38px 30px 32px;text-align:left;font-family:var(--fuente);cursor:pointer;
-  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;width:100%;
+  display:flex;flex-direction:column;min-height:280px;height:100%;
+  background:var(--blanco);border:1px solid var(--linea);border-top:4px solid var(--negro);
+  padding:34px 28px 28px;text-align:left;font-family:var(--fuente);cursor:pointer;
+  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
 }
-.tarjeta:hover{border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.09);transform:translateY(-3px)}
-.tarjeta[aria-expanded="true"]{grid-column:1/-1;border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.09)}
+.tarjeta:hover{border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.10);transform:translateY(-3px)}
+.tarjeta[aria-expanded="true"]{border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.10)}
 .tarjeta:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
 .icono{width:52px;height:52px;display:grid;place-items:center;background:var(--hueso);margin-bottom:22px}
 .icono svg{width:26px;height:26px;stroke:var(--rojo);fill:none;stroke-width:1.6}
-.tarjeta h3{font-size:1.02rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;line-height:1.3}
-.tarjeta .resumen{margin-top:12px;font-size:.9rem;color:var(--gris);font-weight:400}
-.mas{margin-top:22px;font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);display:flex;align-items:center;gap:9px}
+.tarjeta h3{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;line-height:1.35}
+.tarjeta .resumen{margin-top:12px;font-size:.88rem;color:var(--gris);line-height:1.6}
+.mas{margin-top:auto;padding-top:22px;font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);display:flex;align-items:center;gap:9px}
 .mas::after{content:"+";font-size:1.05rem;line-height:1;transition:transform .3s ease}
 .tarjeta[aria-expanded="true"] .mas::after{transform:rotate(45deg)}
-.detalle{max-height:0;overflow:hidden;transition:max-height .5s ease}
-.tarjeta[aria-expanded="true"] .detalle{max-height:900px}
-.detalle-int{padding-top:26px;margin-top:26px;border-top:1px solid var(--linea)}
+
+.detalle{display:none;margin-top:20px;background:var(--blanco);border:1px solid var(--linea);border-left:4px solid var(--rojo);padding:38px 40px}
+.detalle[data-abierto]{display:block;animation:aparece .4s ease both}
+@keyframes aparece{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.detalle h4{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--rojo);margin-bottom:20px}
 .lista{list-style:none;columns:2;column-gap:44px}
 .lista li{padding:11px 0;border-bottom:1px solid var(--linea);font-size:.9rem;display:flex;gap:13px;break-inside:avoid}
 .lista li::before{content:"";flex:0 0 6px;height:6px;background:var(--rojo);margin-top:.6em}
-.nota{margin-top:22px;display:inline-block;background:var(--negro);color:#fff;padding:9px 18px;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.nota{margin-top:24px;display:inline-block;background:var(--negro);color:#fff;padding:9px 18px;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 
 /* ---------- Pie ---------- */
 footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-align:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
 
 /* ---------- WhatsApp ---------- */
-.wsp{
-  position:fixed;right:22px;bottom:22px;z-index:50;width:58px;height:58px;border-radius:50%;
-  background:var(--rojo);color:#fff;display:grid;place-items:center;text-decoration:none;
-  box-shadow:0 6px 20px rgba(0,0,0,.24);transition:transform .25s ease,background .25s ease;
-}
+.wsp{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--rojo);color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.24);transition:transform .25s ease,background .25s ease}
 .wsp:hover{background:var(--negro);transform:translateY(-3px)}
 .wsp:focus-visible{outline:2px solid var(--rojo);outline-offset:4px}
 .wsp svg{width:29px;height:29px;fill:currentColor}
+.wsp::after{content:"Escribime";position:absolute;right:70px;white-space:nowrap;background:var(--negro);color:#fff;font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:9px 15px;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.wsp:hover::after,.wsp:focus-visible::after{opacity:1}
 
 @media (max-width:900px){
   .grilla{grid-template-columns:1fr}
-  .tarjeta[aria-expanded="true"]{grid-column:auto}
   .lista{columns:1}
+  .detalle{padding:30px 26px}
 }
 @media (max-width:760px){
-  .hero{grid-template-columns:1fr;gap:36px;text-align:center;padding:52px 0 46px}
-  .credenciales{justify-content:center;border-top:none;padding-top:0}
-  .identidad .label{display:block}
-  .marco-foto::after{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:34px;text-align:center}
+  .hero{padding:54px 0 50px}
+  .credenciales{justify-content:center}
+  .fachada{opacity:.10}
   .tira{animation-duration:17s}
-  .areas{padding:62px 0 70px}
+  .areas{padding:64px 0 72px}
+  .tarjeta{min-height:0}
   .wsp{right:16px;bottom:16px;width:54px;height:54px}
+  .wsp::after{display:none}
 }
 </style>
 </head>
 <body>
 
+<!-- Dibujo de la fachada, se usa como fondo en dos secciones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="congreso" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice">
+      <linearGradient id="col" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="currentColor" stop-opacity=".85"/>
+        <stop offset="22%" stop-color="currentColor" stop-opacity=".28"/>
+        <stop offset="55%" stop-color="currentColor" stop-opacity=".42"/>
+        <stop offset="100%" stop-color="currentColor" stop-opacity=".9"/>
+      </linearGradient>
+      <linearGradient id="cupula" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="currentColor" stop-opacity=".8"/>
+        <stop offset="34%" stop-color="currentColor" stop-opacity=".3"/>
+        <stop offset="100%" stop-color="currentColor" stop-opacity=".85"/>
+      </linearGradient>
+      <linearGradient id="muro" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="currentColor" stop-opacity=".45"/>
+        <stop offset="100%" stop-color="currentColor" stop-opacity=".7"/>
+      </linearGradient>
+
+      <g id="columna">
+        <rect x="-2" y="0" width="60" height="12" fill="currentColor" fill-opacity=".7"/>
+        <rect x="2" y="12" width="52" height="8" fill="currentColor" fill-opacity=".5"/>
+        <rect x="4" y="20" width="48" height="164" fill="url(#col)"/>
+        <rect x="0" y="184" width="56" height="10" fill="currentColor" fill-opacity=".62"/>
+        <rect x="-3" y="194" width="62" height="10" fill="currentColor" fill-opacity=".75"/>
+      </g>
+      <g id="columna-ala">
+        <rect x="-2" y="0" width="52" height="10" fill="currentColor" fill-opacity=".7"/>
+        <rect x="3" y="10" width="42" height="126" fill="url(#col)"/>
+        <rect x="-2" y="136" width="52" height="9" fill="currentColor" fill-opacity=".7"/>
+      </g>
+
+      <!-- linterna y cúpula -->
+      <rect x="792" y="60" width="16" height="26" fill="currentColor" fill-opacity=".75"/>
+      <rect x="778" y="86" width="44" height="12" fill="currentColor" fill-opacity=".65"/>
+      <path d="M778 98a22 22 0 0 1 44 0z" fill="currentColor" fill-opacity=".6"/>
+      <path d="M680 272a120 120 0 0 1 240 0z" fill="url(#cupula)"/>
+      <path d="M800 152v120M740 165v107M860 165v107M706 200v72M894 200v72" stroke="currentColor" stroke-opacity=".28" stroke-width="2"/>
+      <rect x="668" y="272" width="264" height="14" fill="currentColor" fill-opacity=".7"/>
+      <!-- tambor -->
+      <rect x="686" y="286" width="228" height="52" fill="url(#muro)"/>
+      <g fill="currentColor" fill-opacity=".24">
+        <rect x="700" y="294" width="10" height="40"/><rect x="736" y="294" width="10" height="40"/>
+        <rect x="772" y="294" width="10" height="40"/><rect x="808" y="294" width="10" height="40"/>
+        <rect x="844" y="294" width="10" height="40"/><rect x="880" y="294" width="10" height="40"/>
+      </g>
+      <rect x="674" y="338" width="252" height="12" fill="currentColor" fill-opacity=".68"/>
+
+      <!-- frontón -->
+      <path d="M496 402 800 330l304 72z" fill="currentColor" fill-opacity=".55"/>
+      <path d="M520 398 800 332l280 66z" fill="currentColor" fill-opacity=".22"/>
+      <rect x="486" y="402" width="628" height="16" fill="currentColor" fill-opacity=".72"/>
+      <rect x="492" y="418" width="616" height="30" fill="url(#muro)"/>
+      <rect x="486" y="448" width="628" height="12" fill="currentColor" fill-opacity=".68"/>
+
+      <!-- pórtico central -->
+      <use href="#columna" x="520" y="460"/>
+      <use href="#columna" x="614" y="460"/>
+      <use href="#columna" x="708" y="460"/>
+      <use href="#columna" x="802" y="460"/>
+      <use href="#columna" x="896" y="460"/>
+      <use href="#columna" x="990" y="460"/>
+      <rect x="486" y="640" width="628" height="14" fill="currentColor" fill-opacity=".6"/>
+
+      <!-- alas laterales -->
+      <rect x="40" y="452" width="452" height="14" fill="currentColor" fill-opacity=".66"/>
+      <rect x="46" y="466" width="440" height="24" fill="url(#muro)"/>
+      <rect x="1108" y="452" width="452" height="14" fill="currentColor" fill-opacity=".66"/>
+      <rect x="1114" y="466" width="440" height="24" fill="url(#muro)"/>
+
+      <use href="#columna-ala" x="72" y="490"/>
+      <use href="#columna-ala" x="150" y="490"/>
+      <use href="#columna-ala" x="228" y="490"/>
+      <use href="#columna-ala" x="306" y="490"/>
+      <use href="#columna-ala" x="384" y="490"/>
+      <use href="#columna-ala" x="1132" y="490"/>
+      <use href="#columna-ala" x="1210" y="490"/>
+      <use href="#columna-ala" x="1288" y="490"/>
+      <use href="#columna-ala" x="1366" y="490"/>
+      <use href="#columna-ala" x="1444" y="490"/>
+
+      <g fill="currentColor" fill-opacity=".2">
+        <rect x="122" y="504" width="22" height="96"/><rect x="200" y="504" width="22" height="96"/>
+        <rect x="278" y="504" width="22" height="96"/><rect x="356" y="504" width="22" height="96"/>
+        <rect x="1182" y="504" width="22" height="96"/><rect x="1260" y="504" width="22" height="96"/>
+        <rect x="1338" y="504" width="22" height="96"/><rect x="1416" y="504" width="22" height="96"/>
+      </g>
+
+      <rect x="40" y="636" width="452" height="14" fill="currentColor" fill-opacity=".6"/>
+      <rect x="1108" y="636" width="452" height="14" fill="currentColor" fill-opacity=".6"/>
+
+      <!-- escalinata -->
+      <rect x="0" y="650" width="1600" height="12" fill="currentColor" fill-opacity=".45"/>
+      <rect x="440" y="662" width="720" height="12" fill="currentColor" fill-opacity=".38"/>
+      <rect x="400" y="674" width="800" height="12" fill="currentColor" fill-opacity=".32"/>
+      <rect x="360" y="686" width="880" height="14" fill="currentColor" fill-opacity=".26"/>
+    </symbol>
+  </defs>
+</svg>
+
 <div class="cinta"></div>
 
-<header class="hero wrap">
-  <div class="marco-foto">
-    <div class="retrato"><img src="1.png" alt="Maximiliano Perez"></div>
-  </div>
-  <div class="identidad">
-    <p class="label">Ejercicio profesional</p>
-    <h1>Maximiliano <span>Perez</span></h1>
-    <ul class="credenciales">
-      <li>Abogado</li>
-      <li>Escribano</li>
-      <li>Procurador</li>
-      <li>Magister en Derecho</li>
-    </ul>
-    <a class="boton" href="https://wa.me/5493777620809?text=Hola%20Maximiliano%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web." target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.46 9.46 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.44 9.44 0 01-1.45-5.04c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.42 9.42 0 012.77 6.7c0 5.22-4.25 9.46-9.47 9.46zM20.16 3.83A11.36 11.36 0 0012.05.5C5.77.5.67 5.6.66 11.87c0 2 .53 3.96 1.53 5.68L.56 23.5l6.1-1.6a11.36 11.36 0 005.39 1.37h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
-      Escribime por WhatsApp
-    </a>
+<header class="hero">
+  <svg class="fachada" aria-hidden="true" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice"><use href="#congreso"/></svg>
+  <div class="velo" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="marco-foto">
+      <div class="retrato"><img src="1.png" alt="Maximiliano Perez"></div>
+    </div>
+    <div class="identidad">
+      <h1>Maximiliano <span>Perez</span></h1>
+      <ul class="credenciales">
+        <li>Abogado</li>
+        <li>Escribano</li>
+        <li>Procurador</li>
+        <li>Magister en Derecho</li>
+      </ul>
+    </div>
   </div>
 </header>
 
@@ -165,6 +258,9 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
 </section>
 
 <main class="areas">
+  <svg class="fachada" aria-hidden="true" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice"><use href="#congreso"/></svg>
+  <div class="velo" aria-hidden="true"></div>
+
   <div class="wrap">
     <div class="encabezado">
       <p class="label">Áreas de trabajo</p>
@@ -172,58 +268,56 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
     </div>
 
     <div class="grilla">
-
-      <button class="tarjeta" aria-expanded="false">
-        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 21h14M12 6l-7 2 3.5 7a3.5 3.5 0 01-7 0L5 8m14 0l-7-2m7 2l3.5 7a3.5 3.5 0 01-7 0L19 8"/></svg></div>
+      <button class="tarjeta" aria-expanded="false" aria-controls="d1" data-panel="d1">
+        <span class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 21h14M12 6l-7 2 3.5 7a3.5 3.5 0 01-7 0L5 8m14 0l-7-2m7 2l3.5 7a3.5 3.5 0 01-7 0L19 8"/></svg></span>
         <h3>Estudio Jurídico</h3>
-        <p class="resumen">Todos los fueros del derecho argentino, excepto penal.</p>
-        <p class="mas">Ver detalle</p>
-        <div class="detalle">
-          <div class="detalle-int">
-            <ul class="lista">
-              <li>Laboral: despidos, despido indirecto, accidentes de trabajo y diferencias salariales</li>
-              <li>Civil y comercial: contratos, cobro de pesos, daños y perjuicios, desalojos</li>
-              <li>Familia: divorcios, alimentos, régimen de comunicación, filiación</li>
-              <li>Sucesiones y trámites registrales</li>
-              <li>Previsional: jubilaciones, pensiones y reajustes de haberes</li>
-              <li>Defensa del consumidor y reclamos ante aseguradoras</li>
-              <li>Amparos y contencioso administrativo</li>
-            </ul>
-            <p class="nota">.</p>
-          </div>
-        </div>
+        <span class="resumen">Todos los fueros del derecho argentino, excepto penal.</span>
+        <span class="mas">Ver detalle</span>
       </button>
 
-      <button class="tarjeta" aria-expanded="false">
-        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></div>
+      <button class="tarjeta" aria-expanded="false" aria-controls="d2" data-panel="d2">
+        <span class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9m4 12V9m6 12V9m4 12V9M2 9h20L12 3 2 9z"/></svg></span>
         <h3>Consultoría Política</h3>
-        <p class="resumen">Asesoramiento institucional.</p>
-        <p class="mas">Ver detalle</p>
-        <div class="detalle">
-          <div class="detalle-int">
-            <p>Para gobiernos locales, provinciales, organizaciones e instituciones.</p>
-          </div>
-        </div>
+        <span class="resumen">Asesoramiento institucional.</span>
+        <span class="mas">Ver detalle</span>
       </button>
 
-      <button class="tarjeta" aria-expanded="false">
-        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L2 9l10 5 10-5-10-5zM5 11v5c0 1.5 3.2 3 7 3s7-1.5 7-3v-5M20 10v6"/></svg></div>
+      <button class="tarjeta" aria-expanded="false" aria-controls="d3" data-panel="d3">
+        <span class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L2 9l10 5 10-5-10-5zM5 11v5c0 1.5 3.2 3 7 3s7-1.5 7-3v-5M20 10v6"/></svg></span>
         <h3>Consultas Universitarias</h3>
-        <p class="resumen">Estudiantes de Abogacía.</p>
-        <p class="mas">Ver detalle</p>
-        <div class="detalle">
-          <div class="detalle-int">
-            <p>Orientación en trabajos prácticos, preparación de finales y primeros pasos en la práctica profesional.</p>
-            <ul class="lista" style="margin-top:20px">
-              <li>Materias del área laboral y procesal</li>
-              <li>Lectura y análisis de fallos</li>
-              <li>Redacción de escritos: estructura y errores frecuentes</li>
-              <li>Prácticas y acompañamiento inicial en el estudio</li>
-            </ul>
-          </div>
-        </div>
+        <span class="resumen">Estudiantes de Abogacía.</span>
+        <span class="mas">Ver detalle</span>
       </button>
+    </div>
 
+    <div class="detalle" id="d1">
+      <h4>Estudio Jurídico</h4>
+      <ul class="lista">
+        <li>Laboral: despidos, despido indirecto, accidentes de trabajo y diferencias salariales</li>
+        <li>Civil y comercial: contratos, cobro de pesos, daños y perjuicios, desalojos</li>
+        <li>Familia: divorcios, alimentos, régimen de comunicación, filiación</li>
+        <li>Sucesiones y trámites registrales</li>
+        <li>Previsional: jubilaciones, pensiones y reajustes de haberes</li>
+        <li>Defensa del consumidor y reclamos ante aseguradoras</li>
+        <li>Amparos y contencioso administrativo</li>
+      </ul>
+      <p class="nota">No intervengo en materia penal</p>
+    </div>
+
+    <div class="detalle" id="d2">
+      <h4>Consultoría Política</h4>
+      <p>Para gobiernos locales, provinciales, organizaciones e instituciones.</p>
+    </div>
+
+    <div class="detalle" id="d3">
+      <h4>Consultas Universitarias</h4>
+      <p>Orientación en trabajos prácticos, preparación de finales y primeros pasos en la práctica profesional.</p>
+      <ul class="lista" style="margin-top:22px">
+        <li>Materias del área laboral y procesal</li>
+        <li>Lectura y análisis de fallos</li>
+        <li>Redacción de escritos: estructura y errores frecuentes</li>
+        <li>Prácticas y acompañamiento inicial en el estudio</li>
+      </ul>
     </div>
   </div>
 </main>
@@ -232,22 +326,29 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
   <p>© <span id="anio"></span> Maximiliano Perez</p>
 </footer>
 
-<a class="wsp" href="https://wa.me/5493777620809?text=Hola%20Maximiliano%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wsp" href="https://wa.me/5493777620809?text=Hola%20Maximiliano%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web." target="_blank" rel="noopener" aria-label="Escribime por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.46 9.46 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.44 9.44 0 01-1.45-5.04c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.42 9.42 0 012.77 6.7c0 5.22-4.25 9.46-9.47 9.46zM20.16 3.83A11.36 11.36 0 0012.05.5C5.77.5.67 5.6.66 11.87c0 2 .53 3.96 1.53 5.68L.56 23.5l6.1-1.6a11.36 11.36 0 005.39 1.37h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
 </a>
 
 <script>
 (function(){
   const tarjetas = Array.from(document.querySelectorAll('.tarjeta'));
+  const cerrarTodo = () => {
+    tarjetas.forEach(t => {
+      t.setAttribute('aria-expanded','false');
+      t.querySelector('.mas').textContent = 'Ver detalle';
+      document.getElementById(t.dataset.panel).removeAttribute('data-abierto');
+    });
+  };
   tarjetas.forEach(t => {
     t.addEventListener('click', () => {
       const abierta = t.getAttribute('aria-expanded') === 'true';
-      tarjetas.forEach(o => o.setAttribute('aria-expanded', 'false'));
-      t.setAttribute('aria-expanded', abierta ? 'false' : 'true');
-      if(!abierta) t.querySelector('.mas').textContent = 'Cerrar';
-      tarjetas.forEach(o => {
-        if(o.getAttribute('aria-expanded') === 'false') o.querySelector('.mas').textContent = 'Ver detalle';
-      });
+      cerrarTodo();
+      if(!abierta){
+        t.setAttribute('aria-expanded','true');
+        t.querySelector('.mas').textContent = 'Cerrar';
+        document.getElementById(t.dataset.panel).setAttribute('data-abierto','');
+      }
     });
   });
   document.getElementById('anio').textContent = new Date().getFullYear();
