@@ -7,111 +7,105 @@
 <meta name="description" content="Maximiliano Perez, abogado. Estudio jurídico, consultoría política, consultas universitarias y escribanía.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --crema:#EDE7DC;
-  --papel:#F7F3EC;
-  --oliva:#3F4A3C;
-  --oliva-claro:#5C6853;
-  --tinta:#2B2A26;
-  --suave:#8B8578;
+  --fondo:#EFE9E1;
+  --claro:#F8F4EF;
+  --oscuro:#382C25;
+  --medio:#6B564A;
+  --suave:#A2907F;
+  --tinta:#2A211C;
   --display:'Cormorant Garamond', Georgia, serif;
   --sans:'Jost', system-ui, sans-serif;
+  --titulo:'Archivo Black', Impact, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--crema);color:var(--tinta);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 .label{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;font-weight:400;color:var(--suave)}
 
 /* ---------- Presentación ---------- */
 .hero{padding:80px 0 64px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .retrato{
-  width:clamp(190px,34vw,300px);aspect-ratio:1;border-radius:50%;
-  overflow:hidden;background:#ddd6c9;position:relative;
-  box-shadow:0 0 0 1px rgba(63,74,60,.18), 0 0 0 14px var(--papel);
+  width:clamp(200px,34vw,310px);aspect-ratio:1;border-radius:50%;
+  overflow:hidden;background:#ded5cb;
+  box-shadow:0 0 0 1px rgba(56,44,37,.18), 0 0 0 15px var(--claro);
 }
 .retrato img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
-.hero h1{
-  font-family:var(--display);font-weight:300;
-  font-size:clamp(2.9rem,9vw,5.4rem);line-height:1.02;letter-spacing:.02em;
-  margin-top:46px;
-}
+.hero h1{font-family:var(--display);font-weight:300;font-size:clamp(2.9rem,9vw,5.4rem);line-height:1.02;letter-spacing:.02em;margin-top:48px}
 .hero h1 em{font-style:italic;font-weight:300}
 .rubro{margin-top:20px;display:flex;align-items:center;gap:18px}
-.rubro::before,.rubro::after{content:"";width:44px;height:1px;background:var(--suave);opacity:.5}
-.intro{margin-top:30px;max-width:52ch;font-size:1.02rem;color:#4a4740}
+.rubro::before,.rubro::after{content:"";width:44px;height:1px;background:var(--suave);opacity:.6}
+.intro{margin-top:30px;max-width:52ch;font-size:1.02rem;color:#4c4038}
+
+/* ---------- Carrusel de tira ---------- */
+.tira-seccion{padding:36px 0 20px}
+.marquesina{overflow:hidden;width:100%;border-top:1px solid rgba(56,44,37,.15);border-bottom:1px solid rgba(56,44,37,.15);padding:0}
+.tira{display:flex;width:max-content;animation:desliza 42s linear infinite}
+.marquesina:hover .tira{animation-play-state:paused}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tira figure{
+  position:relative;flex:0 0 auto;margin-right:6px;
+  width:clamp(230px,25vw,360px);aspect-ratio:3/4;overflow:hidden;background:var(--oscuro);
+}
+.tira img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92)}
+.tira figcaption{
+  position:absolute;top:0;left:0;right:0;padding:22px 14px 40px;text-align:center;
+  font-family:var(--titulo);font-size:clamp(1.1rem,2.2vw,1.7rem);letter-spacing:-.01em;
+  color:var(--claro);text-transform:uppercase;line-height:1;
+  background:linear-gradient(to bottom, rgba(42,33,28,.62), rgba(42,33,28,0));
+}
 
 /* ---------- Áreas ---------- */
-.areas{padding:22px 0 96px}
-.indice{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;border-top:1px solid rgba(63,74,60,.18);border-bottom:1px solid rgba(63,74,60,.18);padding:6px 0}
+.areas{padding:60px 0 96px}
+.indice{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;border-top:1px solid rgba(56,44,37,.18);border-bottom:1px solid rgba(56,44,37,.18);padding:6px 0}
 .indice button{
   font-family:var(--sans);font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
   color:var(--suave);background:none;border:none;padding:16px 22px;cursor:pointer;
   transition:color .25s ease;position:relative;
 }
-.indice button:hover{color:var(--oliva)}
-.indice button[aria-selected="true"]{color:var(--oliva);font-weight:500}
-.indice button[aria-selected="true"]::after{content:"";position:absolute;left:22px;right:22px;bottom:6px;height:1px;background:var(--oliva)}
-.indice button:focus-visible{outline:1px solid var(--oliva);outline-offset:-6px}
+.indice button:hover{color:var(--oscuro)}
+.indice button[aria-selected="true"]{color:var(--oscuro);font-weight:500}
+.indice button[aria-selected="true"]::after{content:"";position:absolute;left:22px;right:22px;bottom:6px;height:1px;background:var(--oscuro)}
+.indice button:focus-visible{outline:1px solid var(--oscuro);outline-offset:-6px}
 
 .panel{display:none;padding:64px 0 0}
 .panel[data-abierto]{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start;animation:aparece .5s ease both}
 @keyframes aparece{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.panel h2{font-family:var(--display);font-weight:300;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;letter-spacing:.01em}
+.panel h2{font-family:var(--display);font-weight:300;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15}
 .panel h2 + .label{display:block;margin-top:18px}
-.panel .cuerpo p{color:#4a4740}
+.panel .cuerpo p{color:#4c4038}
 .lista{margin-top:26px;list-style:none}
-.lista li{padding:15px 0;border-bottom:1px solid rgba(63,74,60,.15);font-size:.94rem;display:flex;gap:16px}
-.lista li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--oliva-claro);margin-top:.62em}
+.lista li{padding:15px 0;border-bottom:1px solid rgba(56,44,37,.15);font-size:.94rem;display:flex;gap:16px}
+.lista li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--medio);margin-top:.62em}
 .cta{
-  display:inline-block;margin-top:36px;border:1px solid var(--oliva);color:var(--oliva);
+  display:inline-block;margin-top:36px;border:1px solid var(--oscuro);color:var(--oscuro);
   text-decoration:none;padding:15px 34px;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
   transition:background .25s ease,color .25s ease;
 }
-.cta:hover{background:var(--oliva);color:var(--papel)}
-
-/* ---------- Galería ---------- */
-.galeria{background:var(--oliva);color:var(--papel);padding:96px 0 104px}
-.galeria .label{color:rgba(247,243,236,.6)}
-.galeria h2{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,3rem);margin-top:16px;text-align:center}
-.galeria .encabezado{text-align:center;margin-bottom:52px}
-.carrusel{position:relative;max-width:760px;margin:0 auto}
-.marco{overflow:hidden;background:rgba(0,0,0,.12)}
-.pista{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
-.pista figure{flex:0 0 100%;aspect-ratio:4/3}
-.pista img{width:100%;height:100%;object-fit:cover;display:block}
-.flecha{
-  position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;
-  border:1px solid rgba(247,243,236,.5);background:rgba(63,74,60,.55);color:var(--papel);
-  cursor:pointer;font-size:1rem;line-height:1;display:grid;place-items:center;
-  transition:background .25s ease,color .25s ease;
-}
-.flecha:hover{background:var(--papel);color:var(--oliva)}
-.flecha:focus-visible{outline:2px solid var(--papel);outline-offset:3px}
-.anterior{left:14px}
-.siguiente{right:14px}
-.puntos{display:flex;justify-content:center;gap:12px;margin-top:28px}
-.puntos button{width:7px;height:7px;border-radius:50%;border:1px solid rgba(247,243,236,.55);background:none;padding:0;cursor:pointer;transition:background .25s ease}
-.puntos button[aria-current="true"]{background:var(--papel)}
+.cta:hover{background:var(--oscuro);color:var(--claro)}
 
 /* ---------- Contacto ---------- */
-.contacto{padding:92px 0;text-align:center}
-.contacto h2{font-family:var(--display);font-weight:300;font-size:clamp(2rem,5vw,3.2rem);margin:16px 0 26px}
-.contacto a.dato{display:block;color:var(--tinta);text-decoration:none;font-size:1.05rem;letter-spacing:.04em;padding:6px 0}
-.contacto a.dato:hover{color:var(--oliva)}
-footer{border-top:1px solid rgba(63,74,60,.18);padding:30px 0 46px;text-align:center;color:var(--suave);font-size:.74rem;letter-spacing:.12em}
+.contacto{background:var(--oscuro);color:var(--claro);padding:92px 0;text-align:center}
+.contacto .label{color:rgba(248,244,239,.55)}
+.contacto h2{font-family:var(--display);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,3.2rem);margin:16px 0 28px}
+.contacto a.dato{display:block;color:var(--claro);text-decoration:none;font-size:1.05rem;letter-spacing:.04em;padding:6px 0;opacity:.9}
+.contacto a.dato:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+footer{background:var(--oscuro);color:rgba(248,244,239,.45);padding:0 0 44px;text-align:center;font-size:.72rem;letter-spacing:.14em}
 
 @media (max-width:820px){
   .panel[data-abierto]{grid-template-columns:1fr;gap:34px}
   .hero{padding:56px 0 44px}
-  .galeria{padding:70px 0 76px}
-  .flecha{width:38px;height:38px}
-  .anterior{left:8px}
-  .siguiente{right:8px}
+  .areas{padding:44px 0 72px}
+  .tira{animation-duration:30s}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  .tira{animation:none}
+  .marquesina{overflow-x:auto}
+  *{transition:none!important}
+}
 </style>
 </head>
 <body>
@@ -122,6 +116,24 @@ footer{border-top:1px solid rgba(63,74,60,.18);padding:30px 0 46px;text-align:ce
   <p class="rubro label">Abogado</p>
   <p class="intro">Ejercicio profesional independiente y asesoramiento en cuatro áreas de trabajo. Cada consulta empieza con una lectura honesta del caso y una explicación clara de lo que se puede esperar.</p>
 </header>
+
+<section class="tira-seccion" aria-label="Galería">
+  <div class="marquesina">
+    <div class="tira">
+      <figure><img src="12.png" alt=""><figcaption>Estudio</figcaption></figure>
+      <figure><img src="13.png" alt=""><figcaption>Consultoría</figcaption></figure>
+      <figure><img src="14.png" alt=""><figcaption>Universidad</figcaption></figure>
+      <figure><img src="15.png" alt=""><figcaption>Escribanía</figcaption></figure>
+      <figure><img src="16.png" alt=""><figcaption>Radio</figcaption></figure>
+      <!-- copia para que el movimiento no corte -->
+      <figure aria-hidden="true"><img src="12.png" alt=""><figcaption>Estudio</figcaption></figure>
+      <figure aria-hidden="true"><img src="13.png" alt=""><figcaption>Consultoría</figcaption></figure>
+      <figure aria-hidden="true"><img src="14.png" alt=""><figcaption>Universidad</figcaption></figure>
+      <figure aria-hidden="true"><img src="15.png" alt=""><figcaption>Escribanía</figcaption></figure>
+      <figure aria-hidden="true"><img src="16.png" alt=""><figcaption>Radio</figcaption></figure>
+    </div>
+  </div>
+</section>
 
 <main class="areas wrap">
   <nav class="indice" role="tablist" aria-label="Áreas de trabajo">
@@ -200,35 +212,13 @@ footer{border-top:1px solid rgba(63,74,60,.18);padding:30px 0 46px;text-align:ce
   </section>
 </main>
 
-<section class="galeria">
+<section class="contacto">
   <div class="wrap">
-    <div class="encabezado">
-      <p class="label">Galería</p>
-      <h2>El trabajo, de cerca</h2>
-    </div>
-
-    <div class="carrusel">
-      <div class="marco">
-        <div class="pista" id="pista">
-          <figure><img src="12.png" alt="Imagen 1" loading="lazy"></figure>
-          <figure><img src="13.png" alt="Imagen 2" loading="lazy"></figure>
-          <figure><img src="14.png" alt="Imagen 3" loading="lazy"></figure>
-          <figure><img src="15.png" alt="Imagen 4" loading="lazy"></figure>
-          <figure><img src="16.png" alt="Imagen 5" loading="lazy"></figure>
-        </div>
-      </div>
-      <button class="flecha anterior" id="anterior" aria-label="Imagen anterior">&#8592;</button>
-      <button class="flecha siguiente" id="siguiente" aria-label="Imagen siguiente">&#8594;</button>
-      <div class="puntos" id="puntos" aria-label="Elegir imagen"></div>
-    </div>
+    <p class="label">Contacto</p>
+    <h2>Escribime</h2>
+    <a class="dato" href="mailto:correo@dominio.com">correo@dominio.com</a>
+    <a class="dato" href="tel:+540000000000">(0000) 00-0000</a>
   </div>
-</section>
-
-<section class="contacto wrap">
-  <p class="label">Contacto</p>
-  <h2>Escribime</h2>
-  <a class="dato" href="mailto:correo@dominio.com">correo@dominio.com</a>
-  <a class="dato" href="tel:+540000000000">(0000) 00-0000</a>
 </section>
 
 <footer>
@@ -237,7 +227,6 @@ footer{border-top:1px solid rgba(63,74,60,.18);padding:30px 0 46px;text-align:ce
 
 <script>
 (function(){
-  /* Pestañas */
   const tabs = Array.from(document.querySelectorAll('.indice [role="tab"]'));
   const abrir = (tab) => {
     tabs.forEach(t => {
@@ -259,40 +248,6 @@ footer{border-top:1px solid rgba(63,74,60,.18);padding:30px 0 46px;text-align:ce
       sig.focus(); abrir(sig);
     });
   });
-
-  /* Carrusel */
-  const pista = document.getElementById('pista');
-  const total = pista.children.length;
-  const puntos = document.getElementById('puntos');
-  let actual = 0;
-
-  for(let i = 0; i < total; i++){
-    const b = document.createElement('button');
-    b.setAttribute('aria-label', 'Imagen ' + (i + 1));
-    b.addEventListener('click', () => ir(i));
-    puntos.appendChild(b);
-  }
-  const bolitas = Array.from(puntos.children);
-
-  function ir(i){
-    actual = (i + total) % total;
-    pista.style.transform = 'translateX(-' + (actual * 100) + '%)';
-    bolitas.forEach((b, n) => b.setAttribute('aria-current', n === actual));
-  }
-  document.getElementById('anterior').addEventListener('click', () => ir(actual - 1));
-  document.getElementById('siguiente').addEventListener('click', () => ir(actual + 1));
-
-  /* Deslizar con el dedo */
-  let x0 = null;
-  pista.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
-  pista.addEventListener('touchend', e => {
-    if(x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    if(Math.abs(dx) > 45) ir(actual + (dx < 0 ? 1 : -1));
-    x0 = null;
-  });
-
-  ir(0);
   document.getElementById('anio').textContent = new Date().getFullYear();
 })();
 </script>
