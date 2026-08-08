@@ -7,108 +7,146 @@
 <meta name="description" content="Maximiliano Perez. Abogado, escribano, procurador, magister en derecho.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --blanco:#FFFFFF;
+  --hueso:#F6F5F3;
   --negro:#111111;
   --gris:#5C5C5C;
-  --linea:#E2E2E2;
+  --linea:#E4E1DE;
   --rojo:#7E1220;
-  --display:'Cormorant Garamond', Georgia, serif;
-  --sans:'Jost', system-ui, sans-serif;
+  --rojo-claro:#9B2130;
+  --fuente:'Montserrat', system-ui, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--blanco);color:var(--negro);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-.label{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:var(--rojo)}
+body{background:var(--blanco);color:var(--negro);font-family:var(--fuente);font-weight:400;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.cinta{height:5px;background:linear-gradient(90deg,var(--rojo) 0 62%, var(--negro) 62% 100%)}
+.label{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--rojo)}
 
 /* ---------- Presentación ---------- */
-.hero{padding:78px 0 56px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero{padding:74px 0 68px;display:grid;grid-template-columns:auto 1fr;gap:66px;align-items:center}
+.marco-foto{position:relative;flex:0 0 auto;justify-self:center}
 .retrato{
-  width:clamp(200px,34vw,310px);aspect-ratio:1;border-radius:50%;
-  overflow:hidden;background:#eee;
-  box-shadow:0 0 0 1px var(--linea), 0 0 0 14px #FAFAFA;
+  width:clamp(210px,24vw,290px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+  background:var(--hueso);position:relative;z-index:2;box-shadow:0 0 0 1px var(--linea);
 }
-.retrato img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
-.hero h1{
-  font-family:var(--display);font-weight:400;text-transform:uppercase;
-  font-size:clamp(2.2rem,7.5vw,4.4rem);line-height:1.05;letter-spacing:.08em;
-  margin-top:44px;
+.retrato img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.marco-foto::before{
+  content:"";position:absolute;inset:-16px;border-radius:50%;
+  border:2px solid var(--rojo);border-right-color:transparent;border-bottom-color:transparent;
+  transform:rotate(-38deg);z-index:1;
 }
-.rubro{
-  margin-top:22px;font-family:var(--sans);font-weight:600;color:var(--rojo);
-  font-size:clamp(.66rem,1.6vw,.78rem);letter-spacing:.26em;text-transform:uppercase;
-  max-width:34ch;line-height:2.1;
+.marco-foto::after{
+  content:"";position:absolute;right:-6px;bottom:6px;width:64px;height:64px;
+  background:var(--hueso);border-left:3px solid var(--rojo);z-index:0;
 }
+.identidad h1{
+  font-weight:800;text-transform:uppercase;
+  font-size:clamp(2rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.01em;margin:14px 0 0;
+}
+.identidad h1 span{display:block;color:var(--rojo)}
+.credenciales{margin-top:22px;padding-top:20px;border-top:2px solid var(--negro);display:flex;flex-wrap:wrap;gap:10px 26px}
+.credenciales li{list-style:none;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--negro);display:flex;align-items:center;gap:9px}
+.credenciales li::before{content:"";width:7px;height:7px;background:var(--rojo)}
+.boton{
+  display:inline-flex;align-items:center;gap:11px;margin-top:32px;
+  background:var(--rojo);color:#fff;text-decoration:none;
+  padding:16px 32px;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  transition:background .25s ease,transform .25s ease;
+}
+.boton:hover{background:var(--negro);transform:translateY(-2px)}
+.boton svg{width:17px;height:17px;fill:currentColor}
 
-/* ---------- Tira de fotos ---------- */
-.marquesina{
-  overflow:hidden;width:100%;margin-top:14px;
-  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
-  pointer-events:none;
-}
+/* ---------- Franja de fotos ---------- */
+.marquesina{overflow:hidden;width:100%;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);pointer-events:none;background:var(--hueso)}
 .tira{display:flex;width:max-content;animation:desliza 24s linear infinite}
 @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.tira figure{flex:0 0 auto;margin-right:6px;width:clamp(220px,24vw,340px);aspect-ratio:3/4;overflow:hidden;background:#f2f2f2}
+.tira figure{flex:0 0 auto;margin-right:6px;width:clamp(200px,21vw,300px);aspect-ratio:3/4;overflow:hidden;background:#eceae7}
 .tira img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* ---------- Áreas ---------- */
-.areas{padding:64px 0 90px}
-.indice{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
-.indice button{
-  font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--gris);background:none;border:none;padding:18px 24px;cursor:pointer;
-  transition:color .25s ease;position:relative;
+.areas{padding:86px 0 96px;background:var(--hueso)}
+.encabezado{text-align:center;margin-bottom:48px}
+.encabezado h2{font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:-.01em;margin-top:14px}
+.encabezado h2::after{content:"";display:block;width:56px;height:3px;background:var(--rojo);margin:20px auto 0}
+.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.tarjeta{
+  grid-column:span 1;background:var(--blanco);border:1px solid var(--linea);border-top:4px solid var(--negro);
+  padding:38px 30px 32px;text-align:left;font-family:var(--fuente);cursor:pointer;
+  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;width:100%;
 }
-.indice button:hover{color:var(--negro)}
-.indice button[aria-selected="true"]{color:var(--rojo);font-weight:600}
-.indice button[aria-selected="true"]::after{content:"";position:absolute;left:24px;right:24px;bottom:8px;height:2px;background:var(--rojo)}
-.indice button:focus-visible{outline:1px solid var(--rojo);outline-offset:-6px}
-
-.panel{display:none;padding:60px 0 0}
-.panel[data-abierto]{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start;animation:aparece .45s ease both}
-@keyframes aparece{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.panel h2{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.2;letter-spacing:.04em}
-.panel h2 + .label{display:block;margin-top:16px}
-.panel .cuerpo p{color:#3A3A3A}
-.lista{margin-top:26px;list-style:none}
-.lista li{padding:15px 0;border-bottom:1px solid var(--linea);font-size:.95rem;display:flex;gap:16px}
-.lista li::before{content:"";flex:0 0 6px;height:6px;background:var(--rojo);margin-top:.62em}
-.nota{margin-top:24px;font-size:.82rem;font-weight:600;letter-spacing:.06em;color:var(--rojo);text-transform:uppercase}
+.tarjeta:hover{border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.09);transform:translateY(-3px)}
+.tarjeta[aria-expanded="true"]{grid-column:1/-1;border-top-color:var(--rojo);box-shadow:0 14px 34px rgba(17,17,17,.09)}
+.tarjeta:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
+.icono{width:52px;height:52px;display:grid;place-items:center;background:var(--hueso);margin-bottom:22px}
+.icono svg{width:26px;height:26px;stroke:var(--rojo);fill:none;stroke-width:1.6}
+.tarjeta h3{font-size:1.02rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;line-height:1.3}
+.tarjeta .resumen{margin-top:12px;font-size:.9rem;color:var(--gris);font-weight:400}
+.mas{margin-top:22px;font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo);display:flex;align-items:center;gap:9px}
+.mas::after{content:"+";font-size:1.05rem;line-height:1;transition:transform .3s ease}
+.tarjeta[aria-expanded="true"] .mas::after{transform:rotate(45deg)}
+.detalle{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.tarjeta[aria-expanded="true"] .detalle{max-height:900px}
+.detalle-int{padding-top:26px;margin-top:26px;border-top:1px solid var(--linea)}
+.lista{list-style:none;columns:2;column-gap:44px}
+.lista li{padding:11px 0;border-bottom:1px solid var(--linea);font-size:.9rem;display:flex;gap:13px;break-inside:avoid}
+.lista li::before{content:"";flex:0 0 6px;height:6px;background:var(--rojo);margin-top:.6em}
+.nota{margin-top:22px;display:inline-block;background:var(--negro);color:#fff;padding:9px 18px;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 
 /* ---------- Pie ---------- */
-footer{border-top:1px solid var(--linea);padding:34px 0 46px;text-align:center;color:var(--gris);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-align:center;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
 
-/* ---------- Botón de WhatsApp ---------- */
+/* ---------- WhatsApp ---------- */
 .wsp{
-  position:fixed;right:22px;bottom:22px;z-index:50;
-  width:58px;height:58px;border-radius:50%;
-  background:var(--rojo);color:#fff;
-  display:grid;place-items:center;text-decoration:none;
-  box-shadow:0 6px 20px rgba(0,0,0,.22);
-  transition:transform .25s ease,background .25s ease;
+  position:fixed;right:22px;bottom:22px;z-index:50;width:58px;height:58px;border-radius:50%;
+  background:var(--rojo);color:#fff;display:grid;place-items:center;text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.24);transition:transform .25s ease,background .25s ease;
 }
 .wsp:hover{background:var(--negro);transform:translateY(-3px)}
 .wsp:focus-visible{outline:2px solid var(--rojo);outline-offset:4px}
 .wsp svg{width:29px;height:29px;fill:currentColor}
 
-@media (max-width:820px){
-  .panel[data-abierto]{grid-template-columns:1fr;gap:32px}
-  .hero{padding:52px 0 40px}
-  .areas{padding:46px 0 70px}
-  .tira{animation-duration:18s}
+@media (max-width:900px){
+  .grilla{grid-template-columns:1fr}
+  .tarjeta[aria-expanded="true"]{grid-column:auto}
+  .lista{columns:1}
+}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:36px;text-align:center;padding:52px 0 46px}
+  .credenciales{justify-content:center;border-top:none;padding-top:0}
+  .identidad .label{display:block}
+  .marco-foto::after{display:none}
+  .tira{animation-duration:17s}
+  .areas{padding:62px 0 70px}
   .wsp{right:16px;bottom:16px;width:54px;height:54px}
 }
 </style>
 </head>
 <body>
 
+<div class="cinta"></div>
+
 <header class="hero wrap">
-  <div class="retrato"><img src="1.png" alt="Maximiliano Perez"></div>
-  <h1>Maximiliano Perez</h1>
-  <p class="rubro">Abogado &nbsp;·&nbsp; Escribano &nbsp;·&nbsp; Procurador &nbsp;·&nbsp; Magister en Derecho</p>
+  <div class="marco-foto">
+    <div class="retrato"><img src="1.png" alt="Maximiliano Perez"></div>
+  </div>
+  <div class="identidad">
+    <p class="label">Ejercicio profesional</p>
+    <h1>Maximiliano <span>Perez</span></h1>
+    <ul class="credenciales">
+      <li>Abogado</li>
+      <li>Escribano</li>
+      <li>Procurador</li>
+      <li>Magister en Derecho</li>
+    </ul>
+    <a class="boton" href="https://wa.me/5493777620809?text=Hola%20Maximiliano%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.46 9.46 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.44 9.44 0 01-1.45-5.04c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.91.99 6.7 2.78a9.42 9.42 0 012.77 6.7c0 5.22-4.25 9.46-9.47 9.46zM20.16 3.83A11.36 11.36 0 0012.05.5C5.77.5.67 5.6.66 11.87c0 2 .53 3.96 1.53 5.68L.56 23.5l6.1-1.6a11.36 11.36 0 005.39 1.37h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
+      Escribime por WhatsApp
+    </a>
+  </div>
 </header>
 
 <section class="marquesina" aria-hidden="true">
@@ -126,58 +164,68 @@ footer{border-top:1px solid var(--linea);padding:34px 0 46px;text-align:center;c
   </div>
 </section>
 
-<main class="areas wrap">
-  <nav class="indice" role="tablist" aria-label="Áreas de trabajo">
-    <button role="tab" id="t1" aria-controls="p1" aria-selected="true">Estudio Jurídico</button>
-    <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Consultoría Política</button>
-    <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Consultas Universitarias</button>
-  </nav>
+<main class="areas">
+  <div class="wrap">
+    <div class="encabezado">
+      <p class="label">Áreas de trabajo</p>
+      <h2>En qué puedo ayudarte</h2>
+    </div>
 
-  <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1" data-abierto>
-    <div>
-      <h2>Estudio Jurídico</h2>
-      <p class="label">Todos los fueros, excepto penal</p>
-    </div>
-    <div class="cuerpo">
-      <p>Patrocinio y representación en procesos judiciales y administrativos en todo el territorio argentino, con seguimiento del expediente de principio a fin.</p>
-      <ul class="lista">
-        <li>Laboral: despidos, despido indirecto, accidentes de trabajo y diferencias salariales</li>
-        <li>Civil y comercial: contratos, cobro de pesos, daños y perjuicios, desalojos</li>
-        <li>Familia: divorcios, alimentos, régimen de comunicación, filiación</li>
-        <li>Sucesiones y trámites registrales</li>
-        <li>Previsional: jubilaciones, pensiones y reajustes de haberes</li>
-        <li>Defensa del consumidor y reclamos ante aseguradoras</li>
-        <li>Amparos y contencioso administrativo</li>
-      </ul>
-      <p class="nota">No intervengo en materia penal</p>
-    </div>
-  </section>
+    <div class="grilla">
 
-  <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
-    <div>
-      <h2>Consultoría Política</h2>
-      <p class="label">Asesoramiento institucional</p>
-    </div>
-    <div class="cuerpo">
-      <p>Para gobiernos locales, provinciales, organizaciones e instituciones.</p>
-    </div>
-  </section>
+      <button class="tarjeta" aria-expanded="false">
+        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 21h14M12 6l-7 2 3.5 7a3.5 3.5 0 01-7 0L5 8m14 0l-7-2m7 2l3.5 7a3.5 3.5 0 01-7 0L19 8"/></svg></div>
+        <h3>Estudio Jurídico</h3>
+        <p class="resumen">Todos los fueros del derecho argentino, excepto penal.</p>
+        <p class="mas">Ver detalle</p>
+        <div class="detalle">
+          <div class="detalle-int">
+            <ul class="lista">
+              <li>Laboral: despidos, despido indirecto, accidentes de trabajo y diferencias salariales</li>
+              <li>Civil y comercial: contratos, cobro de pesos, daños y perjuicios, desalojos</li>
+              <li>Familia: divorcios, alimentos, régimen de comunicación, filiación</li>
+              <li>Sucesiones y trámites registrales</li>
+              <li>Previsional: jubilaciones, pensiones y reajustes de haberes</li>
+              <li>Defensa del consumidor y reclamos ante aseguradoras</li>
+              <li>Amparos y contencioso administrativo</li>
+            </ul>
+            <p class="nota">No intervengo en materia penal</p>
+          </div>
+        </div>
+      </button>
 
-  <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
-    <div>
-      <h2>Consultas Universitarias</h2>
-      <p class="label">Estudiantes de Abogacía</p>
+      <button class="tarjeta" aria-expanded="false">
+        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></div>
+        <h3>Consultoría Política</h3>
+        <p class="resumen">Asesoramiento institucional.</p>
+        <p class="mas">Ver detalle</p>
+        <div class="detalle">
+          <div class="detalle-int">
+            <p>Para gobiernos locales, provinciales, organizaciones e instituciones.</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="tarjeta" aria-expanded="false">
+        <div class="icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L2 9l10 5 10-5-10-5zM5 11v5c0 1.5 3.2 3 7 3s7-1.5 7-3v-5M20 10v6"/></svg></div>
+        <h3>Consultas Universitarias</h3>
+        <p class="resumen">Estudiantes de Abogacía.</p>
+        <p class="mas">Ver detalle</p>
+        <div class="detalle">
+          <div class="detalle-int">
+            <p>Orientación en trabajos prácticos, preparación de finales y primeros pasos en la práctica profesional.</p>
+            <ul class="lista" style="margin-top:20px">
+              <li>Materias del área laboral y procesal</li>
+              <li>Lectura y análisis de fallos</li>
+              <li>Redacción de escritos: estructura y errores frecuentes</li>
+              <li>Prácticas y acompañamiento inicial en el estudio</li>
+            </ul>
+          </div>
+        </div>
+      </button>
+
     </div>
-    <div class="cuerpo">
-      <p>Orientación en trabajos prácticos, preparación de finales y primeros pasos en la práctica profesional.</p>
-      <ul class="lista">
-        <li>Materias del área laboral y procesal</li>
-        <li>Lectura y análisis de fallos</li>
-        <li>Redacción de escritos: estructura y errores frecuentes</li>
-        <li>Prácticas y acompañamiento inicial en el estudio</li>
-      </ul>
-    </div>
-  </section>
+  </div>
 </main>
 
 <footer>
@@ -190,25 +238,16 @@ footer{border-top:1px solid var(--linea);padding:34px 0 46px;text-align:center;c
 
 <script>
 (function(){
-  const tabs = Array.from(document.querySelectorAll('.indice [role="tab"]'));
-  const abrir = (tab) => {
-    tabs.forEach(t => {
-      const activo = t === tab;
-      t.setAttribute('aria-selected', activo);
-      t.tabIndex = activo ? 0 : -1;
-      const panel = document.getElementById(t.getAttribute('aria-controls'));
-      panel.hidden = !activo;
-      activo ? panel.setAttribute('data-abierto','') : panel.removeAttribute('data-abierto');
-    });
-  };
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => abrir(tab));
-    tab.addEventListener('keydown', e => {
-      const paso = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if(!paso) return;
-      e.preventDefault();
-      const sig = tabs[(i + paso + tabs.length) % tabs.length];
-      sig.focus(); abrir(sig);
+  const tarjetas = Array.from(document.querySelectorAll('.tarjeta'));
+  tarjetas.forEach(t => {
+    t.addEventListener('click', () => {
+      const abierta = t.getAttribute('aria-expanded') === 'true';
+      tarjetas.forEach(o => o.setAttribute('aria-expanded', 'false'));
+      t.setAttribute('aria-expanded', abierta ? 'false' : 'true');
+      if(!abierta) t.querySelector('.mas').textContent = 'Cerrar';
+      tarjetas.forEach(o => {
+        if(o.getAttribute('aria-expanded') === 'false') o.querySelector('.mas').textContent = 'Ver detalle';
+      });
     });
   });
   document.getElementById('anio').textContent = new Date().getFullYear();
