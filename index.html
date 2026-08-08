@@ -46,14 +46,22 @@ body{background:var(--blanco);color:var(--negro);font-family:var(--fuente);font-
 .credenciales li::before{content:"";width:7px;height:7px;background:var(--rojo)}
 
 /* ---------- Quién soy ---------- */
-.perfil{position:relative;background:var(--blanco);padding:0 0 76px;z-index:3}
-.perfil .wrap{display:grid;grid-template-columns:270px 1fr;gap:56px;align-items:start;border-top:1px solid var(--linea);padding-top:54px}
-.perfil h2{font-weight:800;text-transform:uppercase;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.1;letter-spacing:-.01em}
-.perfil h2::after{content:"";display:block;width:48px;height:3px;background:var(--rojo);margin-top:18px}
+.perfil{
+  position:relative;z-index:3;padding:70px 0 76px;
+  background:linear-gradient(180deg,#F8F7F5 0%,#EDEAE5 100%);
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+}
+.perfil .wrap{max-width:880px}
+.perfil h2{
+  text-align:center;font-weight:800;text-transform:uppercase;
+  font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1;letter-spacing:.14em;
+  text-indent:.14em;margin-bottom:44px;
+}
+.perfil h2::after{content:"";display:block;width:62px;height:3px;background:var(--rojo);margin:22px auto 0}
 .perfil .texto p{color:#3A3A3A;font-size:.98rem}
 .perfil .texto p + p{margin-top:18px}
 .perfil .texto strong{font-weight:700;color:var(--negro)}
-.destacado{margin:0 0 22px;border-left:3px solid var(--rojo);padding:4px 0 4px 22px;font-size:1.02rem;font-weight:600;color:var(--negro);line-height:1.65}
+.destacado{margin:0 0 24px;border-left:3px solid var(--rojo);padding:6px 0 6px 24px;font-size:1.04rem;font-weight:600;color:var(--negro);line-height:1.65}
 
 /* ---------- Franja de fotos ---------- */
 .marquesina{overflow:hidden;width:100%;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);pointer-events:none;background:var(--hueso);position:relative;z-index:4}
@@ -117,7 +125,7 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
   .grilla{grid-template-columns:1fr}
   .lista{columns:1}
   .detalle{padding:30px 26px}
-  .perfil .wrap{grid-template-columns:1fr;gap:28px}
+  .perfil{padding:54px 0 58px}
 }
 @media (max-width:760px){
   .hero .wrap{grid-template-columns:1fr;gap:34px;text-align:center}
@@ -250,7 +258,7 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
         <li>Abogado</li>
         <li>Escribano</li>
         <li>Procurador</li>
-        <li>Magister en Derecho</li>
+        <li>Maestría en Derecho (en curso)</li>
       </ul>
     </div>
   </div>
@@ -261,7 +269,7 @@ footer{background:var(--negro);color:rgba(255,255,255,.55);padding:38px 0;text-a
     <h2>Quién soy</h2>
     <div class="texto">
       <p class="destacado">Soy abogado en la provincia de Corrientes. Ejerzo la profesión en forma independiente y también realizo consultorías en política y militancia política, tanto en el ámbito universitario como en el gubernamental.</p>
-      <p>Además del título de abogado, soy <strong>escribano público nacional y procurador</strong>, y próximo a graduarme en <strong>Magíster en Derecho por la Universidad Nacional de Cordoba</strong>. Esa formación me permite atender de manera integral tanto los casos jurídicos como el asesoramiento en política, militancia y ámbito universitario.</p>
+      <p>Además del título de abogado, soy <strong>escribano público nacional y procurador</strong>, y estoy próximo a graduarme como <strong>Magíster en Derecho por la Universidad Nacional de Córdoba</strong>. Esa formación me permite atender de manera integral tanto los casos jurídicos como el asesoramiento en política, militancia y ámbito universitario.</p>
     </div>
   </div>
 </section>
